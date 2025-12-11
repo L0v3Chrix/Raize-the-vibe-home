@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <!-- Main gradient -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF1493"/>
+      <stop offset="50%" style="stop-color:#FF69B4"/>
+      <stop offset="100%" style="stop-color:#00FFFF"/>
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Outer glow -->
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#FF1493" flood-opacity="0.6"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- White outline/stroke layer -->
+  <text x="200" y="65" 
+        font-family="Impact, 'Arial Black', sans-serif" 
+        font-size="52" 
+        font-weight="bold"
+        font-style="italic"
+        text-anchor="middle"
+        stroke="white"
+        stroke-width="6"
+        fill="none"
+        filter="url(#outerGlow)">
+    RAIZE THE VIBE
+  </text>
+  
+  <!-- Main gradient text -->
+  <text x="200" y="65" 
+        font-family="Impact, 'Arial Black', sans-serif" 
+        font-size="52" 
+        font-weight="bold"
+        font-style="italic"
+        text-anchor="middle"
+        fill="url(#mainGradient)"
+        filter="url(#glow)">
+    RAIZE THE VIBE
+  </text>
+  
+  <!-- Highlight accent line -->
+  <path d="M 50 75 Q 200 85 350 75" 
+        stroke="url(#mainGradient)" 
+        stroke-width="3" 
+        fill="none"
+        opacity="0.7"/>
+</svg>

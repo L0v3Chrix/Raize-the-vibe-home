@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "GHL_LOCATION_ID": "@ghl-location-id",
+    "GHL_API_KEY": "@ghl-api-key",
+    "GHL_CALENDAR_ID": "@ghl-calendar-id",
+    "NEXT_PUBLIC_SITE_URL": "@site-url"
+  }
+}
