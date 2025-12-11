@@ -428,9 +428,9 @@ export const treasures: Treasure[] = [
 
 // Who we serve avatars
 export const whoWeServe = [
-  { id: 'trades', label: 'Local trades', emoji: '🔧', description: 'Trades pros who need online presence' },
-  { id: 'sober-living', label: 'Sober living homes', emoji: '🏠', description: 'Recovery communities serving families' },
-  { id: 'wellness', label: 'Wellness centers', emoji: '💆', description: 'Healers and therapists' },
-  { id: 'mission', label: 'Mission-driven founders', emoji: '🙏', description: 'Purpose over pure profit' },
-  { id: 'service-pros', label: 'Service professionals', emoji: '💼', description: 'Consultants, coaches, experts' }
+  { id: 'trades', label: 'Local trades', emoji: '/images/emojis/local.png', description: 'Trades pros who need online presence' },
+  { id: 'sober-living', label: 'Sober living homes', emoji: '/images/emojis/home.png', description: 'Recovery communities serving families' },
+  { id: 'wellness', label: 'Wellness centers', emoji: '/images/emojis/healthcare.png', description: 'Healers and therapists' },
+  { id: 'mission', label: 'Mission-driven founders', emoji: '/images/emojis/site/icon-heart.png', description: 'Purpose over pure profit' },
+  { id: 'service-pros', label: 'Service professionals', emoji: '/images/emojis/professional.png', description: 'Consultants, coaches, experts' }
 ];
