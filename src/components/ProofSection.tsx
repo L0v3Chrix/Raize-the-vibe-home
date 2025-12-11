@@ -116,7 +116,7 @@ export default function ProofSection() {
             viewport={{ once: true }}
             className="font-display text-2xl font-bold text-center mb-8 flex items-center justify-center gap-2"
           >
-            <img src="/images/emojis/site/icon-gamepad.png" alt="gamepad" className="w-8 h-8" />
+            <img src="/images/emojis/site/icon-gamepad.png" alt="gamepad" className="w-16 h-16" />
             Spot the Transformation
           </motion.h3>
 
@@ -162,7 +162,7 @@ export default function ProofSection() {
                         className="text-center p-4 bg-vibe-black/30 rounded-xl"
                       >
                         <div className="mb-2 flex justify-center">
-                          <img src={metric.icon} alt={metric.label} className="w-8 h-8" />
+                          <img src={metric.icon} alt={metric.label} className="w-16 h-16" />
                         </div>
                         <div className="flex items-center justify-center gap-1 mb-1">
                           <TrendingUp className="w-4 h-4 text-vibe-green" />

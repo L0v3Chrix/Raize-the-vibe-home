@@ -43,7 +43,7 @@ export default function ServicesSection() {
             className="mb-12 text-center"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vibe-pink/20 border border-vibe-pink/30">
-              <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-4 h-4" />
+              <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-8 h-8" />
               <span className="text-sm">
                 Based on your quiz, we recommend: <strong className="text-vibe-pink">
                   {services.find(s => s.id === vibeResult.recommendedService)?.name}
@@ -78,7 +78,7 @@ export default function ServicesSection() {
                 <div className="p-6">
                   {/* Header */}
                   <div className="flex items-start gap-4 mb-4">
-                    <span className="text-4xl">{service.icon}</span>
+                    <img src={service.icon} alt={service.name} className="w-24 h-24" />
                     <div className="flex-1">
                       <h3 className="font-display text-xl font-bold">{service.name}</h3>
                       <p className="text-sm text-vibe-muted">{service.tagline}</p>
@@ -150,7 +150,7 @@ export default function ServicesSection() {
               >
                 <div className="sticky top-0 bg-vibe-dark border-b border-white/10 p-6 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <span className="text-4xl">{showDetailModal.icon}</span>
+                    <img src={showDetailModal.icon} alt={showDetailModal.name} className="w-24 h-24" />
                     <div>
                       <h3 className="font-display text-2xl font-bold">{showDetailModal.name}</h3>
                       <p className="text-vibe-muted">{showDetailModal.tagline}</p>
@@ -269,7 +269,7 @@ export default function ServicesSection() {
         >
           <div className="glass-card p-6 border-l-4 border-vibe-cyan">
             <h4 className="text-sm font-semibold text-vibe-cyan mb-2 uppercase tracking-wide flex items-center gap-2">
-              <img src="/images/emojis/site/icon-chart-up.png" alt="chart" className="w-4 h-4" />
+              <img src="/images/emojis/site/icon-chart-up.png" alt="chart" className="w-8 h-8" />
               CRM & Backend Automation
             </h4>
             <p className="text-sm text-vibe-soft leading-relaxed">

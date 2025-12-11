@@ -207,7 +207,7 @@ export function CalendarStep({ contactId, contactData, journeyData, onBooked }: 
         </h2>
         <p className="text-zinc-400 flex items-center gap-2">
           Next 72 hours only — Let's make this happen fast!
-          <img src="/images/emojis/site/icon-lightning.png" alt="lightning" className="w-4 h-4 inline" />
+          <img src="/images/emojis/site/icon-lightning.png" alt="lightning" className="w-8 h-8 inline" />
         </p>
       </div>
 

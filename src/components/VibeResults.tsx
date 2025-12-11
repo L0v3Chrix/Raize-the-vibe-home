@@ -264,22 +264,22 @@ export default function VibeResults() {
               >
                 {vibeResult.score >= 71 ? (
                   <span className="flex items-center gap-2">
-                    <img src="/images/emojis/site/icon-fire.png" alt="fire" className="w-4 h-4" />
+                    <img src="/images/emojis/site/icon-fire.png" alt="fire" className="w-8 h-8" />
                     Priority Match
                   </span>
                 ) : vibeResult.score >= 51 ? (
                   <span className="flex items-center gap-2">
-                    <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-4 h-4" />
+                    <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-8 h-8" />
                     Hot Lead
                   </span>
                 ) : vibeResult.score >= 31 ? (
                   <span className="flex items-center gap-2">
-                    <img src="/images/emojis/site/icon-wave.png" alt="wave" className="w-4 h-4" />
+                    <img src="/images/emojis/site/icon-wave.png" alt="wave" className="w-8 h-8" />
                     Warm Connection
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    <img src="/images/emojis/site/icon-seedling.png" alt="seedling" className="w-4 h-4" />
+                    <img src="/images/emojis/site/icon-seedling.png" alt="seedling" className="w-8 h-8" />
                     Let's Nurture This
                   </span>
                 )}
@@ -294,7 +294,7 @@ export default function VibeResults() {
               className="glass-card p-8"
             >
               <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2">
-                <img src="/images/emojis/site/icon-brain.png" alt="brain" className="w-6 h-6" />
+                <img src="/images/emojis/site/icon-brain.png" alt="brain" className="w-12 h-12" />
                 What We're Already Thinking For You
               </h3>
               <p className="text-vibe-muted mb-6">{vibeResult.personalizedInsight}</p>

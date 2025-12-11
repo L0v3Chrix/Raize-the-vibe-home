@@ -295,7 +295,7 @@ function TextInput({
       
       {examples && examples.length > 0 && (
         <div className="flex items-start gap-2 text-sm">
-          <img src="/images/emojis/site/icon-lightbulb.png" alt="lightbulb" className="w-4 h-4 mt-0.5" />
+          <img src="/images/emojis/site/icon-lightbulb.png" alt="lightbulb" className="w-8 h-8 mt-0.5" />
           <AnimatePresence mode="wait">
             <motion.span
               key={exampleIndex}
@@ -403,7 +403,7 @@ function SingleSelect({
         >
           {option.emoji && (
             option.emoji.endsWith('.png') || option.emoji.endsWith('.jpg') || option.emoji.endsWith('.svg') ? (
-              <img src={option.emoji} alt="" className="w-8 h-8 object-contain flex-shrink-0" />
+              <img src={option.emoji} alt="" className="w-16 h-16 object-contain flex-shrink-0" />
             ) : (
               <span className="text-2xl flex-shrink-0">{option.emoji}</span>
             )
@@ -461,7 +461,7 @@ function MultiSelect({
             </div>
             {option.emoji && (
               option.emoji.endsWith('.png') || option.emoji.endsWith('.jpg') || option.emoji.endsWith('.svg') ? (
-                <img src={option.emoji} alt="" className="w-8 h-8 object-contain" />
+                <img src={option.emoji} alt="" className="w-16 h-16 object-contain" />
               ) : (
                 <span className="text-xl">{option.emoji}</span>
               )

@@ -64,7 +64,7 @@ export default function StoryTimeline() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.2 }}
                 >
-                  {event.icon}
+                  <img src={event.icon} alt={event.title} className="w-20 h-20" />
                 </motion.div>
 
                 {/* Content card */}
@@ -115,11 +115,11 @@ export default function StoryTimeline() {
                   className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-vibe-dark border-2 border-white/10
                            flex items-center justify-center text-3xl md:text-4xl cursor-pointer
                            transition-all group-hover:border-vibe-pink group-hover:scale-110"
-                  whileHover={{ 
+                  whileHover={{
                     boxShadow: '0 0 30px rgba(255, 20, 147, 0.5)',
                   }}
                 >
-                  {segment.emoji}
+                  <img src={segment.emoji} alt={segment.label} className="w-24 h-24 md:w-28 md:h-28" />
                 </motion.div>
                 
                 <span className="block text-xs text-vibe-muted mt-2 text-center max-w-[80px] md:max-w-[100px]">
