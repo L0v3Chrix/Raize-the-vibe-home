@@ -18,7 +18,7 @@ export interface QuizOption {
   label: string;
   emoji?: string;
   description?: string;
-  value: string | number;
+  value: string;
 }
 
 export interface QuizAnswer {

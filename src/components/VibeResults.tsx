@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Unlock, Download, Gift, Sparkles, Mail, ArrowRight, Calendar } from 'lucide-react';
+import { Lock, Unlock, Download, Sparkles, Mail, ArrowRight, Calendar } from 'lucide-react';
 import { pdf } from '@react-pdf/renderer';
 import { useVibeStore } from '../store/vibeStore';
 import { vibePersonas } from '../data/quizData';
@@ -78,10 +78,10 @@ export default function VibeResults() {
   };
 
   const handleDownloadPDF = async () => {
-    if (!vibeResult || !capturedEmail) return;
+    if (!vibeResult || !email) return;
 
     try {
-      const blob = await pdf(<VibeReportPDF vibeResult={vibeResult} email={capturedEmail} />).toBlob();
+      const blob = await pdf(<VibeReportPDF vibeResult={vibeResult} email={email} />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;

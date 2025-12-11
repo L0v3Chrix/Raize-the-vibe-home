@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, ArrowRight, ChevronDown } from 'lucide-react';
+import { X, Check, ArrowRight } from 'lucide-react';
 import { services } from '../data/servicesData';
 import { Service } from '../types';
 import { useVibeStore } from '../store/vibeStore';

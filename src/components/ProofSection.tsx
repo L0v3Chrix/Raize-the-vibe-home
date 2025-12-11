@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Quote, Star, TrendingUp } from 'lucide-react';
+import { Quote, TrendingUp } from 'lucide-react';
 import { testimonials, caseStudies } from '../data/servicesData';
 
 export default function ProofSection() {
@@ -176,80 +176,5 @@ export default function ProofSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function StatCounter({ 
-  value, 
-  suffix = '', 
-  label, 
-  icon 
-}: { 
-  value: string; 
-  suffix?: string; 
-  label: string;
-  icon?: React.ReactNode;
-}) {
-  const [displayValue, setDisplayValue] = useState('0');
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const numericValue = parseFloat(value);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          
-          let start: number | null = null;
-          const duration = 2000;
-
-          const animate = (timestamp: number) => {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = numericValue * eased;
-            
-            if (value.includes('.')) {
-              setDisplayValue(current.toFixed(1));
-            } else {
-              setDisplayValue(Math.floor(current).toString());
-            }
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
-
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [numericValue, value, hasAnimated]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-center p-6 glass-card"
-    >
-      <div className="flex items-center justify-center gap-1 mb-2">
-        <span className="text-4xl md:text-5xl font-display font-bold text-vibe-pink">
-          {displayValue}
-        </span>
-        <span className="text-2xl font-display font-bold text-vibe-pink">{suffix}</span>
-        {icon}
-      </div>
-      <p className="text-sm text-vibe-muted">{label}</p>
-    </motion.div>
   );
 }
