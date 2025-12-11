@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Quote, TrendingUp } from 'lucide-react';
-import { testimonials, caseStudies } from '../data/servicesData';
+import { testimonials } from '../data/servicesData';
+import { caseStudies } from '../data/caseStudiesData';
 
 export default function ProofSection() {
   const tickerRef = useRef<HTMLDivElement>(null);
@@ -113,9 +114,10 @@ export default function ProofSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-2xl font-bold text-center mb-8"
+            className="font-display text-2xl font-bold text-center mb-8 flex items-center justify-center gap-2"
           >
-            🎮 Spot the Transformation
+            <img src="/images/emojis/site/icon-gamepad.png" alt="gamepad" className="w-8 h-8" />
+            Spot the Transformation
           </motion.h3>
 
           <div className="space-y-8">
@@ -128,47 +130,61 @@ export default function ProofSection() {
                 transition={{ delay: index * 0.1 }}
                 className="glass-card p-6 md:p-8"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="md:w-1/3">
+                <div className="flex flex-col gap-6">
+                  {/* Header */}
+                  <div>
                     <span className="text-xs text-vibe-pink uppercase tracking-wider">{study.industry}</span>
-                    <h4 className="font-display text-xl font-bold mt-1 mb-2">{study.clientName}</h4>
-                    
-                    <div className="mb-4">
+                    <h4 className="font-display text-xl font-bold mt-1 mb-2">{study.client}</h4>
+                  </div>
+
+                  {/* Challenge & Solution */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
                       <span className="text-xs text-vibe-muted uppercase">Challenge:</span>
                       <p className="text-sm text-vibe-soft mt-1">{study.challenge}</p>
                     </div>
-                    
+
                     <div>
                       <span className="text-xs text-vibe-muted uppercase">Solution:</span>
                       <p className="text-sm text-vibe-soft mt-1">{study.solution}</p>
                     </div>
                   </div>
 
-                  <div className="md:w-2/3">
-                    <div className="grid grid-cols-3 gap-4">
-                      {study.results.map((result, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.2 + i * 0.1 }}
-                          className="text-center p-4 bg-vibe-black/30 rounded-xl"
-                        >
-                          <div className="flex items-center justify-center gap-1 mb-1">
-                            <TrendingUp className="w-4 h-4 text-vibe-green" />
-                            <span className="text-2xl md:text-3xl font-display font-bold text-vibe-green">
-                              {result.value}
-                            </span>
-                          </div>
-                          <p className="text-xs text-vibe-muted">{result.metric}</p>
-                          {result.improvement && (
-                            <p className="text-xs text-vibe-green mt-1">{result.improvement}</p>
-                          )}
-                        </motion.div>
-                      ))}
-                    </div>
+                  {/* Metrics */}
+                  <div className="grid grid-cols-3 gap-4">
+                    {study.metrics.map((metric, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.1 }}
+                        className="text-center p-4 bg-vibe-black/30 rounded-xl"
+                      >
+                        <div className="mb-2 flex justify-center">
+                          <img src={metric.icon} alt={metric.label} className="w-8 h-8" />
+                        </div>
+                        <div className="flex items-center justify-center gap-1 mb-1">
+                          <TrendingUp className="w-4 h-4 text-vibe-green" />
+                          <span className="text-2xl md:text-3xl font-display font-bold text-vibe-green">
+                            {metric.value}
+                          </span>
+                        </div>
+                        <p className="text-xs text-vibe-muted">{metric.label}</p>
+                      </motion.div>
+                    ))}
                   </div>
+
+                  {/* Testimonial */}
+                  {study.testimonial && (
+                    <div className="bg-vibe-dark/50 p-4 rounded-xl border-l-4 border-vibe-pink">
+                      <Quote className="w-6 h-6 text-vibe-pink/30 mb-2" />
+                      <p className="text-sm text-vibe-soft italic mb-3">"{study.testimonial.quote}"</p>
+                      <p className="text-xs text-vibe-muted">
+                        — {study.testimonial.author}, {study.testimonial.role}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}

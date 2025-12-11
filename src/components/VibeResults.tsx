@@ -247,7 +247,7 @@ export default function VibeResults() {
               {/* Persona */}
               <div className="mb-8">
                 <div className="flex items-center justify-center gap-3 mb-3">
-                  <span className="text-4xl">{persona?.emoji}</span>
+                  {persona?.emoji && <img src={persona.emoji} alt={vibeResult.type} className="w-12 h-12" />}
                   <h3 className="font-display text-2xl md:text-3xl font-bold">{vibeResult.type}</h3>
                 </div>
                 <p className="text-vibe-muted max-w-lg mx-auto">
@@ -262,10 +262,27 @@ export default function VibeResults() {
                   vibeResult.score >= 31 ? 'bg-vibe-yellow/20 text-vibe-yellow' :
                   'bg-vibe-muted/20 text-vibe-muted'}`}
               >
-                {vibeResult.score >= 71 ? '🔥 Priority Match' :
-                 vibeResult.score >= 51 ? '✨ Hot Lead' :
-                 vibeResult.score >= 31 ? '👋 Warm Connection' :
-                 '🌱 Let\'s Nurture This'}
+                {vibeResult.score >= 71 ? (
+                  <span className="flex items-center gap-2">
+                    <img src="/images/emojis/site/icon-fire.png" alt="fire" className="w-4 h-4" />
+                    Priority Match
+                  </span>
+                ) : vibeResult.score >= 51 ? (
+                  <span className="flex items-center gap-2">
+                    <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-4 h-4" />
+                    Hot Lead
+                  </span>
+                ) : vibeResult.score >= 31 ? (
+                  <span className="flex items-center gap-2">
+                    <img src="/images/emojis/site/icon-wave.png" alt="wave" className="w-4 h-4" />
+                    Warm Connection
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <img src="/images/emojis/site/icon-seedling.png" alt="seedling" className="w-4 h-4" />
+                    Let's Nurture This
+                  </span>
+                )}
               </div>
             </motion.div>
 
@@ -277,7 +294,8 @@ export default function VibeResults() {
               className="glass-card p-8"
             >
               <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2">
-                🧠 What We're Already Thinking For You
+                <img src="/images/emojis/site/icon-brain.png" alt="brain" className="w-6 h-6" />
+                What We're Already Thinking For You
               </h3>
               <p className="text-vibe-muted mb-6">{vibeResult.personalizedInsight}</p>
               

@@ -150,7 +150,8 @@ export default function Hero() {
             whileTap={{ scale: 0.98 }}
           >
             <span className="relative z-10 flex items-center gap-3">
-              🚀 Let's Vibe Check This
+              <img src="/images/emojis/site/icon-rocket.png" alt="rocket" className="w-6 h-6" />
+              Let's Vibe Check This
             </span>
             
             {/* Animated border */}

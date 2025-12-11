@@ -90,9 +90,13 @@ export function MagicTrickSticker({ onTrigger }: MagicTrickStickerProps) {
               repeat: hasTriggered ? 0 : Infinity,
               repeatDelay: 3
             }}
-            className="text-5xl mb-3"
+            className="mb-3 flex justify-center"
           >
-            {hasTriggered ? '✨' : '🎩'}
+            <img
+              src={hasTriggered ? '/images/emojis/site/icon-sparkles.png' : '/images/emojis/site/icon-tophat.png'}
+              alt={hasTriggered ? 'sparkles' : 'top hat'}
+              className="w-16 h-16"
+            />
           </motion.div>
 
           <h3 className="text-xl font-bold text-white mb-2">

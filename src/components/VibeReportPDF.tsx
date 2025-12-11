@@ -187,19 +187,19 @@ export const VibeReportPDF = ({ vibeResult, email }: VibeReportPDFProps) => {
         {/* Score Section */}
         <View style={styles.scoreSection}>
           <Text style={styles.scoreNumber}>{vibeResult.score}/100</Text>
-          <Text style={styles.personaTitle}>{persona?.emoji} {vibeResult.type}</Text>
+          <Text style={styles.personaTitle}>{vibeResult.type}</Text>
           <Text style={styles.personaDescription}>{persona?.description}</Text>
         </View>
 
         {/* Personalized Insight */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>🧠 What We're Already Thinking For You</Text>
+          <Text style={styles.sectionTitle}>What We're Already Thinking For You</Text>
           <Text style={styles.insightText}>{vibeResult.personalizedInsight}</Text>
         </View>
 
         {/* Top Priorities */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>✨ Your Top Priorities</Text>
+          <Text style={styles.sectionTitle}>Your Top Priorities</Text>
           {vibeResult.topPriorities.map((priority, index) => (
             <View key={index} style={styles.priorityItem}>
               <Text style={styles.priorityBullet}>✓</Text>
@@ -211,9 +211,9 @@ export const VibeReportPDF = ({ vibeResult, email }: VibeReportPDFProps) => {
         {/* Recommended Service */}
         {recommendedService && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>💎 Recommended For You</Text>
+            <Text style={styles.sectionTitle}>Recommended For You</Text>
             <View style={styles.serviceCard}>
-              <Text style={styles.serviceName}>{recommendedService.icon} {recommendedService.name}</Text>
+              <Text style={styles.serviceName}>{recommendedService.name}</Text>
               <Text style={styles.serviceTagline}>{recommendedService.tagline}</Text>
               <Text style={styles.servicePrice}>{recommendedService.priceDisplay}</Text>
               <Text style={styles.serviceDescription}>{recommendedService.description}</Text>

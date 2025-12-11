@@ -205,8 +205,9 @@ export function CalendarStep({ contactId, contactData, journeyData, onBooked }: 
         <h2 className="text-2xl font-bold text-white mb-2">
           Pick Your Perfect Time
         </h2>
-        <p className="text-zinc-400">
-          Next 72 hours only — Let's make this happen fast! ⚡
+        <p className="text-zinc-400 flex items-center gap-2">
+          Next 72 hours only — Let's make this happen fast!
+          <img src="/images/emojis/site/icon-lightning.png" alt="lightning" className="w-4 h-4 inline" />
         </p>
       </div>
 

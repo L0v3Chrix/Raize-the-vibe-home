@@ -295,7 +295,7 @@ function TextInput({
       
       {examples && examples.length > 0 && (
         <div className="flex items-start gap-2 text-sm">
-          <span className="text-vibe-muted">💡</span>
+          <img src="/images/emojis/site/icon-lightbulb.png" alt="lightbulb" className="w-4 h-4 mt-0.5" />
           <AnimatePresence mode="wait">
             <motion.span
               key={exampleIndex}

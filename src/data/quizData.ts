@@ -219,26 +219,26 @@ export const vibePersonas = {
   'Creative Collaborator': {
     description: "You thrive on partnership and creative energy. You want a team that gets your vision and brings something extra to the table.",
     color: '#FF1493',
-    emoji: '🎨'
+    emoji: '/images/emojis/site/icon-palette.png'
   },
   'Innovation Seeker': {
     description: "You're excited about AI and automation. You want cutting-edge solutions that put you ahead of competitors.",
     color: '#00FFFF',
-    emoji: '🚀'
+    emoji: '/images/emojis/site/icon-rocket.png'
   },
   'Growth Accelerator': {
     description: "You see digital investment as fuel for growth. ROI matters, but so does doing it right.",
     color: '#10B981',
-    emoji: '📈'
+    emoji: '/images/emojis/site/icon-chart-up.png'
   },
   'Systems Builder': {
     description: "You want everything to work together seamlessly. Automation, integration, efficiency — that's your jam.",
     color: '#8B5CF6',
-    emoji: '⚙️'
+    emoji: '/images/emojis/site/icon-gear.png'
   },
   'Brand Visionary': {
     description: "You care deeply about how your business shows up. The vibe, the feel, the experience — it all matters.",
     color: '#F97316',
-    emoji: '✨'
+    emoji: '/images/emojis/site/icon-sparkles.png'
   }
 };

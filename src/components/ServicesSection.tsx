@@ -43,7 +43,7 @@ export default function ServicesSection() {
             className="mb-12 text-center"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vibe-pink/20 border border-vibe-pink/30">
-              <span className="text-vibe-pink">✨</span>
+              <img src="/images/emojis/site/icon-sparkles.png" alt="sparkles" className="w-4 h-4" />
               <span className="text-sm">
                 Based on your quiz, we recommend: <strong className="text-vibe-pink">
                   {services.find(s => s.id === vibeResult.recommendedService)?.name}
@@ -268,8 +268,9 @@ export default function ServicesSection() {
           className="mt-12 max-w-2xl mx-auto"
         >
           <div className="glass-card p-6 border-l-4 border-vibe-cyan">
-            <h4 className="text-sm font-semibold text-vibe-cyan mb-2 uppercase tracking-wide">
-              📊 CRM & Backend Automation
+            <h4 className="text-sm font-semibold text-vibe-cyan mb-2 uppercase tracking-wide flex items-center gap-2">
+              <img src="/images/emojis/site/icon-chart-up.png" alt="chart" className="w-4 h-4" />
+              CRM & Backend Automation
             </h4>
             <p className="text-sm text-vibe-soft leading-relaxed">
               Our custom CRM is available to all of our clients at wholesale pricing. If your project

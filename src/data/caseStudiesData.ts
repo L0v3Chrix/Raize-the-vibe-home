@@ -37,9 +37,9 @@ export const caseStudies: CaseStudy[] = [
       role: "Owner, SimsCo Electric"
     },
     metrics: [
-      { label: "Monthly Qualified Leads", value: "47", icon: "📞" },
-      { label: "Project Value Increase", value: "+32%", icon: "💰" },
-      { label: "Time Saved Weekly", value: "8 hrs", icon: "⏰" }
+      { label: "Monthly Qualified Leads", value: "47", icon: "/images/emojis/site/icon-phone.png" },
+      { label: "Project Value Increase", value: "+32%", icon: "/images/emojis/site/icon-money-bag.png" },
+      { label: "Time Saved Weekly", value: "8 hrs", icon: "/images/emojis/site/icon-clock.png" }
     ],
     tags: ['Local Trades', 'Lead Gen', 'AI Automation']
   },
@@ -61,9 +61,9 @@ export const caseStudies: CaseStudy[] = [
       role: "CEO, OB1 Insurance"
     },
     metrics: [
-      { label: "Conversion Rate", value: "67%", icon: "📈" },
-      { label: "Q4 Pipeline", value: "$3.2M", icon: "💎" },
-      { label: "Time Saved", value: "-60%", icon: "⚡" }
+      { label: "Conversion Rate", value: "67%", icon: "/images/emojis/site/icon-chart-up.png" },
+      { label: "Q4 Pipeline", value: "$3.2M", icon: "/images/emojis/site/icon-diamond.png" },
+      { label: "Time Saved", value: "-60%", icon: "/images/emojis/site/icon-lightning.png" }
     ],
     tags: ['Insurance', 'Funnel Design', 'Compliance', 'AI']
   },
@@ -85,9 +85,9 @@ export const caseStudies: CaseStudy[] = [
       role: "Founder, 1322 Legacy Strategies"
     },
     metrics: [
-      { label: "Conversion Rate", value: "19%", icon: "🎯" },
-      { label: "Time on Site", value: "7:23", icon: "⏱️" },
-      { label: "SEO Traffic", value: "+340%", icon: "🚀" }
+      { label: "Conversion Rate", value: "19%", icon: "/images/emojis/site/icon-target.png" },
+      { label: "Time on Site", value: "7:23", icon: "/images/emojis/site/icon-stopwatch.png" },
+      { label: "SEO Traffic", value: "+340%", icon: "/images/emojis/site/icon-rocket.png" }
     ],
     tags: ['Education', 'Financial Services', 'Content Strategy']
   },
@@ -109,9 +109,9 @@ export const caseStudies: CaseStudy[] = [
       role: "Executive Director, Help Now of Austin"
     },
     metrics: [
-      { label: "Time Saved Monthly", value: "60 hrs", icon: "⏰" },
-      { label: "Completion Rate", value: "95%", icon: "✅" },
-      { label: "Families Served", value: "+180%", icon: "❤️" }
+      { label: "Time Saved Monthly", value: "60 hrs", icon: "/images/emojis/site/icon-clock.png" },
+      { label: "Completion Rate", value: "95%", icon: "/images/emojis/site/icon-check.png" },
+      { label: "Families Served", value: "+180%", icon: "/images/emojis/site/icon-heart.png" }
     ],
     tags: ['Nonprofit', 'Forms', 'Accessibility', 'Impact']
   },
@@ -133,9 +133,9 @@ export const caseStudies: CaseStudy[] = [
       role: "Co-Founder, ReLid"
     },
     metrics: [
-      { label: "AOV Increase", value: "+45%", icon: "💵" },
-      { label: "Monthly Savings", value: "$347", icon: "💰" },
-      { label: "Support Tickets", value: "-28%", icon: "📉" }
+      { label: "AOV Increase", value: "+45%", icon: "/images/emojis/site/icon-money-bills.png" },
+      { label: "Monthly Savings", value: "$347", icon: "/images/emojis/site/icon-money-bag.png" },
+      { label: "Support Tickets", value: "-28%", icon: "/images/emojis/site/icon-chart-down.png" }
     ],
     tags: ['E-commerce', 'Custom Build', 'Product Config']
   },
@@ -157,9 +157,9 @@ export const caseStudies: CaseStudy[] = [
       role: "Nerds with Good Taste"
     },
     metrics: [
-      { label: "Completion Rate", value: "65%", icon: "🎯" },
-      { label: "Qualified Leads", value: "+3x", icon: "🚀" },
-      { label: "Vibe Score", value: "100", icon: "✨" }
+      { label: "Completion Rate", value: "65%", icon: "/images/emojis/site/icon-target.png" },
+      { label: "Qualified Leads", value: "+3x", icon: "/images/emojis/site/icon-rocket.png" },
+      { label: "Vibe Score", value: "100", icon: "/images/emojis/site/icon-sparkles.png" }
     ],
     tags: ['Meta', 'Lead Qualification', 'Interactive']
   }

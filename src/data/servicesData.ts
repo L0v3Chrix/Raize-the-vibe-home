@@ -5,7 +5,7 @@ export const services: Service[] = [
     id: 'concierge-250',
     name: 'Digital Concierge',
     tagline: 'You Run It, We Create It',
-    icon: '📱',
+    icon: '/images/emojis/site/icon-phone-mobile.png',
     priceDisplay: '$250/week',
     description: 'We create all your weekly content one week in advance. You stay hands-on, but with professional creative direction.',
     features: [
@@ -47,7 +47,7 @@ export const services: Service[] = [
     id: 'concierge-400',
     name: 'Done-For-You Digital',
     tagline: 'We Handle Everything',
-    icon: '🚀',
+    icon: '/images/emojis/site/icon-rocket.png',
     priceDisplay: '$400/week',
     description: 'Everything in the $250 tier plus we post and publish across your channels, engage on your behalf, and optimize your presence.',
     features: [
@@ -99,7 +99,7 @@ export const services: Service[] = [
     id: 'concierge-600',
     name: 'Full Digital Management',
     tagline: 'Your Complete Digital Team',
-    icon: '👑',
+    icon: '/images/emojis/site/icon-crown.png',
     priceDisplay: '$600/week',
     description: 'Full digital management plus either office support OR video creation. This is for businesses ready for real momentum.',
     features: [
@@ -144,7 +144,7 @@ export const services: Service[] = [
     id: 'website',
     name: 'Brand & Website Creation',
     tagline: 'Finally Feel Like You Online',
-    icon: '🎨',
+    icon: '/images/emojis/site/icon-palette.png',
     priceDisplay: 'Custom Quote',
     description: "You don't need a giant rebrand. You need a presence you're proud of — one that matches who you are and converts without manipulation.",
     features: [
@@ -188,7 +188,7 @@ export const services: Service[] = [
     id: 'funnel',
     name: 'Infotainment Funnels™',
     tagline: 'Education That Sells',
-    icon: '🎯',
+    icon: '/images/emojis/site/icon-target.png',
     priceDisplay: '$2,000-$5,000',
     description: 'People buy when they feel educated, not pressured. We design funnels that explain, build trust, filter leads, and make next steps feel natural.',
     features: [
@@ -241,7 +241,7 @@ export const services: Service[] = [
     id: 'custom-build',
     name: 'Pay-What-You-Can Studio',
     tagline: 'Bring Your Idea to Life',
-    icon: '🔧',
+    icon: '/images/emojis/site/icon-wrench.png',
     priceDisplay: '$300-$3,000',
     description: 'Sometimes you just need A THING. A tool, a form, a calculator, a dashboard. You describe it, we build it, you pay what feels right.\n\nThis is our way of saying: if you have heart, hustle, and a vision that matters — money shouldn\'t be the thing that stops you. We believe the best ideas don\'t always come with the biggest budgets. Whether you\'re bootstrapping a mission-driven project, testing an MVP, or building something that serves your community — we want to help.\n\nYou bring the vision. We bring the craft. Together, we figure out what\'s fair. No shame, no judgment, just honest work for honest people.',
     features: [
@@ -369,25 +369,25 @@ export const storyTimeline: TimelineEvent[] = [
     id: 'chaos',
     title: 'We started in the chaos',
     description: "Agency life. Revolving doors. Disappearing freelancers. Clients frustrated. Us too. We saw small business owners collecting marketing people like Pokemon cards — and none of them ever stuck.",
-    icon: '🌀'
+    icon: '/images/emojis/site/icon-swirl.png'
   },
   {
     id: 'question',
     title: 'We asked a different question',
     description: "What if we just... partnered with fewer people, but actually showed up for them? What if instead of scaling to 200 clients, we went deep with a handful who felt like family?",
-    icon: '💡'
+    icon: '/images/emojis/site/icon-lightbulb.png'
   },
   {
     id: 'birth',
     title: 'Raize The Vibe was born',
     description: "A tiny studio. Family-owned. AI-powered. Built for businesses with heart. We're not trying to be the biggest agency. We're trying to be your crew.",
-    icon: '🌟'
+    icon: '/images/emojis/site/icon-star.png'
   },
   {
     id: 'philosophy',
     title: 'Our philosophy crystallized',
     description: "No revolving doors. No junior staff. No outsourcing to strangers. We serve owner-operators, mission-driven founders, people who build their communities — not just their revenue.",
-    icon: '🎯'
+    icon: '/images/emojis/site/icon-target.png'
   }
 ];
 
@@ -396,7 +396,7 @@ export const treasures: Treasure[] = [
     id: 'vibe-report',
     name: 'Your Vibe Report',
     description: 'A personalized PDF breakdown of your quiz results, recommended services, and next steps.',
-    icon: '📄',
+    icon: '/images/emojis/site/icon-document.png',
     unlockCondition: 'Complete the quiz',
     isUnlocked: false
   },
@@ -404,7 +404,7 @@ export const treasures: Treasure[] = [
     id: 'ai-playbook',
     name: 'AI Automation Playbook',
     description: 'Our internal guide to the automations we use for clients — and how you could use them too.',
-    icon: '🤖',
+    icon: '/images/emojis/site/icon-robot.png',
     unlockCondition: 'AI interest score 8+',
     isUnlocked: false
   },
@@ -412,7 +412,7 @@ export const treasures: Treasure[] = [
     id: 'priority-booking',
     name: 'Priority Booking Slot',
     description: 'Skip the queue and get a same-week consultation slot reserved for high-vibe prospects.',
-    icon: '⚡',
+    icon: '/images/emojis/site/icon-lightning.png',
     unlockCondition: 'Book a call or share results',
     isUnlocked: false
   },
@@ -420,7 +420,7 @@ export const treasures: Treasure[] = [
     id: 'secret-coupon',
     name: 'Secret Coupon',
     description: "A hidden discount code for the observant. 10% off your first project or bonus consultation time.",
-    icon: '🎁',
+    icon: '/images/emojis/site/icon-gift.png',
     unlockCondition: 'Find the hidden code',
     isUnlocked: false
   }
