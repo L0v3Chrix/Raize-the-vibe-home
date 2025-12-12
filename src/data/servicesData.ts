@@ -2,6 +2,54 @@ import { Service, Testimonial, CaseStudy, TimelineEvent, Treasure } from '../typ
 
 export const services: Service[] = [
   {
+    id: 'custom-build',
+    name: 'Pay-What-You-Can Studio',
+    tagline: 'Bring Your Idea to Life',
+    icon: '/images/emojis/site/icon-wrench.png',
+    priceDisplay: '$300-$3,000',
+    description: 'Sometimes you just need A THING. A tool, a form, a calculator, a dashboard. You describe it, we build it, you pay what feels right.\n\nThis is our way of saying: if you have heart, hustle, and a vision that matters — money shouldn\'t be the thing that stops you. We believe the best ideas don\'t always come with the biggest budgets. Whether you\'re bootstrapping a mission-driven project, testing an MVP, or building something that serves your community — we want to help.\n\nYou bring the vision. We bring the craft. Together, we figure out what\'s fair. No shame, no judgment, just honest work for honest people.',
+    features: [
+      '90-120 minute vision session',
+      'Asset collection & organization',
+      'Scope & timeline clarity',
+      'Fast, thoughtful execution',
+      '30 days of support included',
+      'Pay what feels right and true'
+    ],
+    deliverables: [
+      {
+        category: 'The Process',
+        items: [
+          'Vision session (recorded)',
+          'Asset organization',
+          'Scope document',
+          'Build timeline',
+          'Delivery + walkthrough'
+        ]
+      },
+      {
+        category: 'Examples We Build',
+        items: [
+          'Custom calculators',
+          'Intake forms',
+          'Dashboards',
+          'Quoting systems',
+          'Small apps & tools',
+          'Database interfaces'
+        ]
+      }
+    ],
+    idealFor: [
+      'Bootstrapped founders with more vision than budget',
+      'Nonprofits and mission-driven organizations',
+      'Side hustles and passion projects',
+      'Anyone testing an MVP before going all-in',
+      'Creators who just need ONE thing built right',
+      'People who value transparency and trust over transactions'
+    ],
+    ctaText: 'Share Your Vision'
+  },
+  {
     id: 'concierge-250',
     name: 'Digital Concierge',
     tagline: 'You Run It, We Create It',
@@ -236,54 +284,6 @@ export const services: Service[] = [
       'Anyone tired of cold leads'
     ],
     ctaText: 'Build My Funnel'
-  },
-  {
-    id: 'custom-build',
-    name: 'Pay-What-You-Can Studio',
-    tagline: 'Bring Your Idea to Life',
-    icon: '/images/emojis/site/icon-wrench.png',
-    priceDisplay: '$300-$3,000',
-    description: 'Sometimes you just need A THING. A tool, a form, a calculator, a dashboard. You describe it, we build it, you pay what feels right.\n\nThis is our way of saying: if you have heart, hustle, and a vision that matters — money shouldn\'t be the thing that stops you. We believe the best ideas don\'t always come with the biggest budgets. Whether you\'re bootstrapping a mission-driven project, testing an MVP, or building something that serves your community — we want to help.\n\nYou bring the vision. We bring the craft. Together, we figure out what\'s fair. No shame, no judgment, just honest work for honest people.',
-    features: [
-      '90-120 minute vision session',
-      'Asset collection & organization',
-      'Scope & timeline clarity',
-      'Fast, thoughtful execution',
-      '30 days of support included',
-      'Pay what feels right and true'
-    ],
-    deliverables: [
-      {
-        category: 'The Process',
-        items: [
-          'Vision session (recorded)',
-          'Asset organization',
-          'Scope document',
-          'Build timeline',
-          'Delivery + walkthrough'
-        ]
-      },
-      {
-        category: 'Examples We Build',
-        items: [
-          'Custom calculators',
-          'Intake forms',
-          'Dashboards',
-          'Quoting systems',
-          'Small apps & tools',
-          'Database interfaces'
-        ]
-      }
-    ],
-    idealFor: [
-      'Bootstrapped founders with more vision than budget',
-      'Nonprofits and mission-driven organizations',
-      'Side hustles and passion projects',
-      'Anyone testing an MVP before going all-in',
-      'Creators who just need ONE thing built right',
-      'People who value transparency and trust over transactions'
-    ],
-    ctaText: 'Share Your Vision'
   }
 ];
 
