@@ -207,7 +207,7 @@ export default function VibeResults() {
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
               {treasures.slice(0, 4).map((treasure) => (
                 <div key={treasure.id} className="p-4 bg-vibe-dark/30 rounded-xl border border-white/5 opacity-50">
-                  <span className="text-2xl mb-2 block filter grayscale">{treasure.icon}</span>
+                  <img src={treasure.icon} alt={treasure.name} className="w-8 h-8 mb-2 mx-auto filter grayscale" />
                   <span className="text-sm text-vibe-muted">{treasure.name}</span>
                   <Lock className="w-4 h-4 text-vibe-muted mx-auto mt-2" />
                 </div>
@@ -325,7 +325,7 @@ export default function VibeResults() {
                 className="glass-card p-8 border-vibe-pink/30"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <span className="text-4xl">{recommendedService.icon}</span>
+                  <img src={recommendedService.icon} alt={recommendedService.name} className="w-16 h-16" />
                   <div>
                     <span className="text-xs text-vibe-pink uppercase tracking-wider">Recommended For You</span>
                     <h3 className="font-display text-2xl font-bold">{recommendedService.name}</h3>
@@ -387,7 +387,7 @@ export default function VibeResults() {
                           : 'bg-vibe-dark/30 border-white/5 opacity-50'}`}
                       whileHover={isUnlocked ? { scale: 1.05 } : {}}
                     >
-                      <span className="text-3xl mb-2 block">{treasure.icon}</span>
+                      <img src={treasure.icon} alt={treasure.name} className="w-12 h-12 mb-2 mx-auto" />
                       <span className="text-sm font-semibold block mb-1">{treasure.name}</span>
 
                       {isUnlocked ? (
