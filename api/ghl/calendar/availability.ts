@@ -38,7 +38,7 @@ export default async function handler(
 
     // Fetch available slots from GHL
     const response = await fetch(
-      `${GHL_API_BASE}/calendars/${GHL_CALENDAR_ID}/free-slots?startDate=${now.toISOString()}&endDate=${endDate.toISOString()}`,
+      `${GHL_API_BASE}/calendars/${GHL_CALENDAR_ID}/free-slots?startDate=${now.getTime()}&endDate=${endDate.getTime()}`,
       {
         method: 'GET',
         headers: {
