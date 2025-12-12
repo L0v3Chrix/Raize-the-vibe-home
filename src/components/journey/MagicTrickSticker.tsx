@@ -27,7 +27,7 @@ export function MagicTrickSticker({ onTrigger }: MagicTrickStickerProps) {
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-      className="relative"
+      className="relative pt-16 md:pt-20"
     >
       {/* Magical Glow Effect */}
       <motion.div
@@ -40,23 +40,44 @@ export function MagicTrickSticker({ onTrigger }: MagicTrickStickerProps) {
           repeat: Infinity,
           ease: 'easeInOut'
         }}
-        className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-2xl blur-xl opacity-50"
+        className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-xl blur-xl opacity-50"
       />
 
-      {/* Sticker Container */}
+      {/* Arrow Sticker (NEW - static graphic pointing to button) */}
+      <motion.div
+        className="absolute -top-4 right-8 md:-right-8 z-20"
+        animate={{
+          rotate: [0, -5, 5, 0],
+          y: [0, -5, 0]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: 'easeInOut'
+        }}
+      >
+        <img
+          src="/images/magic-trick-arrow.png"
+          alt="Try the magic trick!"
+          className="w-32 h-32 md:w-40 md:h-40"
+        />
+      </motion.div>
+
+      {/* Simple Button (REDESIGNED) */}
       <motion.button
         onClick={handleClick}
         disabled={hasTriggered}
         whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
         whileTap={{ scale: 0.95 }}
         className={`
-          relative bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500
-          rounded-2xl p-6 shadow-2xl overflow-hidden
+          relative bg-vibe-dark border-2 border-white/20 rounded-xl
+          px-6 py-4 md:px-8 md:py-5 lg:px-10 lg:py-6
+          shadow-2xl overflow-hidden
           transform transition-all duration-300
-          ${hasTriggered ? 'cursor-default' : 'cursor-pointer hover:shadow-pink-500/50'}
+          ${hasTriggered ? 'cursor-default' : 'cursor-pointer hover:border-cyan-400/50'}
         `}
       >
-        {/* Sparkle Effects */}
+        {/* Sparkle Effects (keep) */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(6)].map((_, i) => (
             <motion.div
@@ -79,75 +100,17 @@ export function MagicTrickSticker({ onTrigger }: MagicTrickStickerProps) {
           ))}
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center">
-          <motion.div
-            animate={hasTriggered ? {} : {
-              rotate: [0, -10, 10, -10, 10, 0]
-            }}
-            transition={{
-              duration: 0.5,
-              repeat: hasTriggered ? 0 : Infinity,
-              repeatDelay: 3
-            }}
-            className="mb-3 flex justify-center"
-          >
-            <img
-              src={hasTriggered ? '/images/emojis/site/icon-sparkles.png' : '/images/emojis/site/icon-tophat.png'}
-              alt={hasTriggered ? 'sparkles' : 'top hat'}
-              className="w-16 h-16"
-            />
-          </motion.div>
-
-          <h3 className="text-xl font-bold text-white mb-2">
-            {hasTriggered ? 'Magic Sent!' : 'Try the Magic Trick!'}
-          </h3>
-
-          <p className="text-sm text-white/90 mb-4 max-w-xs mx-auto">
-            {hasTriggered
-              ? 'Check your SMS app for a surprise!'
-              : 'Click here to send Chrix a magical journey recap via SMS'}
-          </p>
-
-          {!hasTriggered && (
-            <div className="flex items-center justify-center gap-2 text-white/80 text-xs">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              <span>Opens your SMS app</span>
-            </div>
-          )}
-
-          {hasTriggered && (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="text-white/80 text-xs"
-            >
-              ✓ Magic trick activated!
-            </motion.div>
-          )}
-        </div>
-
-        {/* Border Shimmer */}
-        <motion.div
-          className="absolute inset-0 border-2 border-white/30 rounded-2xl"
-          animate={{
-            rotate: 360
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'linear'
-          }}
-        />
+        {/* Button Text Only */}
+        <span className="relative z-10 text-lg md:text-xl lg:text-2xl font-bold text-white text-center block">
+          {hasTriggered ? 'Magic Sent! ✨' : "Don't push this button. Whatever you do"}
+        </span>
       </motion.button>
 
-      {/* Instruction Text */}
-      <p className="mt-4 text-xs text-zinc-500 text-center max-w-md mx-auto">
-        This will open your phone's SMS app with a pre-written message to Chrix.
-        No spam, no tricks — just a fun way to say "I booked a call!" 🎉
+      {/* Instruction Text Below */}
+      <p className="mt-4 text-xs md:text-sm text-zinc-500 text-center max-w-md mx-auto">
+        {hasTriggered
+          ? 'Check your SMS app for a surprise!'
+          : 'Opens your SMS app with a pre-written message'}
       </p>
     </motion.div>
   )

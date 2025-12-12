@@ -75,6 +75,15 @@ export default function ServicesSection() {
                   </div>
                 )}
 
+                {/* Batteries Stamp - bottom right corner */}
+                <div className="absolute bottom-4 right-4 opacity-80 z-10">
+                  <img
+                    src="/images/stamps/batteries-not-included.png"
+                    alt="Batteries not included"
+                    className="w-16 h-16 md:w-20 md:h-20 rotate-[-12deg]"
+                  />
+                </div>
+
                 <div className="p-6">
                   {/* Header */}
                   <div className="flex items-start gap-4 mb-4">
@@ -276,7 +285,7 @@ export default function ServicesSection() {
               Our custom CRM is available to all of our clients at wholesale pricing. If your project
               requires backend automation, you can bring your own software or you can pay us between
               <span className="text-white font-semibold"> $75 and $500/month </span>
-              depending on your use case. <span className="text-vibe-muted italic">(Software not included)</span>
+              depending on your use case.
             </p>
           </div>
         </motion.div>

@@ -3,18 +3,18 @@ import { Service, Testimonial, CaseStudy, TimelineEvent, Treasure } from '../typ
 export const services: Service[] = [
   {
     id: 'custom-build',
-    name: 'Pay-What-You-Can Studio',
-    tagline: 'Bring Your Idea to Life',
+    name: 'The Build Studio',
+    tagline: 'Pay It Forward. Get It Built.',
     icon: '/images/emojis/site/icon-wrench.png',
-    priceDisplay: '$300-$3,000',
-    description: 'Sometimes you just need A THING. A tool, a form, a calculator, a dashboard. You describe it, we build it, you pay what feels right.\n\nThis is our way of saying: if you have heart, hustle, and a vision that matters — money shouldn\'t be the thing that stops you. We believe the best ideas don\'t always come with the biggest budgets. Whether you\'re bootstrapping a mission-driven project, testing an MVP, or building something that serves your community — we want to help.\n\nYou bring the vision. We bring the craft. Together, we figure out what\'s fair. No shame, no judgment, just honest work for honest people.',
+    priceDisplay: 'Suggested: $50-100/hr',
+    description: 'Some people can pay more. Some people can\'t. Everyone gets the same work.\nThat\'s it. That\'s the model.\n\nWhen you pay above our suggested rate, you\'re funding a founder who can\'t. When you pay what you can, someone already covered you. Either way — you\'re part of the crew.',
     features: [
-      '90-120 minute vision session',
-      'Asset collection & organization',
-      'Scope & timeline clarity',
-      'Fast, thoughtful execution',
-      '30 days of support included',
-      'Pay what feels right and true'
+      'Websites • Logos • Email campaigns',
+      'Landing pages • Automations • Dashboards',
+      'Forms • Social campaigns • Brand kits',
+      'That one thing you\'ve been Googling for months',
+      'Real conversation. Clear scope. Quality work.',
+      'No judgment.'
     ],
     deliverables: [
       {
@@ -48,145 +48,6 @@ export const services: Service[] = [
       'People who value transparency and trust over transactions'
     ],
     ctaText: 'Share Your Vision'
-  },
-  {
-    id: 'concierge-250',
-    name: 'Digital Concierge',
-    tagline: 'You Run It, We Create It',
-    icon: '/images/emojis/site/icon-phone-mobile.png',
-    priceDisplay: '$250/week',
-    description: 'We create all your weekly content one week in advance. You stay hands-on, but with professional creative direction.',
-    features: [
-      'Weekly content created in advance',
-      'Social creatives for FB, IG, Nextdoor, GMB',
-      'Captions, prompts, and talking points',
-      'Simple calendar with exact posting instructions',
-      'Brand-consistent messaging'
-    ],
-    deliverables: [
-      {
-        category: 'Social Content',
-        items: [
-          '10-20 branded posts weekly',
-          'Platform-specific formatting',
-          'Hashtag strategy included',
-          'Content calendar with dates'
-        ]
-      },
-      {
-        category: 'Support',
-        items: [
-          'Weekly creative review',
-          'Posting instructions',
-          'Response templates',
-          'Async communication support'
-        ]
-      }
-    ],
-    idealFor: [
-      'Owners who want to stay hands-on',
-      'Those building posting habits',
-      'Businesses testing the waters',
-      'Side hustlers with day jobs'
-    ],
-    ctaText: 'Start Creating'
-  },
-  {
-    id: 'concierge-400',
-    name: 'Done-For-You Digital',
-    tagline: 'We Handle Everything',
-    icon: '/images/emojis/site/icon-rocket.png',
-    priceDisplay: '$400/week',
-    description: 'Everything in the $250 tier plus we post and publish across your channels, engage on your behalf, and optimize your presence.',
-    features: [
-      'Everything in $250 tier',
-      'We post and publish for you',
-      'Community engagement on your behalf',
-      'On-page SEO improvements',
-      'AI search optimization',
-      'Review response management'
-    ],
-    deliverables: [
-      {
-        category: 'Content & Posting',
-        items: [
-          '10-20 branded posts weekly',
-          'Published across all platforms',
-          'Optimal timing for engagement',
-          'Stories and reels included'
-        ]
-      },
-      {
-        category: 'Engagement',
-        items: [
-          'Comment responses',
-          'DM management (light)',
-          'Community interaction',
-          'Review monitoring'
-        ]
-      },
-      {
-        category: 'Optimization',
-        items: [
-          'On-page SEO updates',
-          'Structured data / schema',
-          'Local SEO improvements',
-          'AI search preparation'
-        ]
-      }
-    ],
-    idealFor: [
-      'Busy owners who need it handled',
-      'Businesses ready to grow',
-      'Those who want consistent presence',
-      'Local service providers'
-    ],
-    ctaText: 'Go Hands-Free'
-  },
-  {
-    id: 'concierge-600',
-    name: 'Full Digital Management',
-    tagline: 'Your Complete Digital Team',
-    icon: '/images/emojis/site/icon-crown.png',
-    priceDisplay: '$600/week',
-    description: 'Full digital management plus either office support OR video creation. This is for businesses ready for real momentum.',
-    features: [
-      'Everything in $400 tier',
-      'Choose: Office Support OR Video Creation',
-      'Email triage and management',
-      'Call & text coordination',
-      'Lead routing and follow-up',
-      'Short-form video content'
-    ],
-    deliverables: [
-      {
-        category: 'Path A: Office Support',
-        items: [
-          'Email inbox management',
-          'Call/text routing',
-          'Lead qualification',
-          'Customer coordination',
-          'Appointment confirmations'
-        ]
-      },
-      {
-        category: 'Path B: Video Creation',
-        items: [
-          'Short-form videos weekly',
-          'Testimonial-style content',
-          'Educational clips',
-          'Story-driven micro-content',
-          'Platform-optimized formats'
-        ]
-      }
-    ],
-    idealFor: [
-      'Growing businesses with volume',
-      'Owners drowning in admin',
-      'Those ready for video content',
-      'Businesses scaling fast'
-    ],
-    ctaText: 'Scale With Us'
   },
   {
     id: 'website',
@@ -284,6 +145,145 @@ export const services: Service[] = [
       'Anyone tired of cold leads'
     ],
     ctaText: 'Build My Funnel'
+  },
+  {
+    id: 'concierge-400',
+    name: 'Done-For-You Digital',
+    tagline: 'We Handle Everything',
+    icon: '/images/emojis/site/icon-rocket.png',
+    priceDisplay: '$400/week',
+    description: 'Everything in the $250 tier plus we post and publish across your channels, engage on your behalf, and optimize your presence.',
+    features: [
+      'Everything in $250 tier',
+      'We post and publish for you',
+      'Community engagement on your behalf',
+      'On-page SEO improvements',
+      'AI search optimization',
+      'Review response management'
+    ],
+    deliverables: [
+      {
+        category: 'Content & Posting',
+        items: [
+          '10-20 branded posts weekly',
+          'Published across all platforms',
+          'Optimal timing for engagement',
+          'Stories and reels included'
+        ]
+      },
+      {
+        category: 'Engagement',
+        items: [
+          'Comment responses',
+          'DM management (light)',
+          'Community interaction',
+          'Review monitoring'
+        ]
+      },
+      {
+        category: 'Optimization',
+        items: [
+          'On-page SEO updates',
+          'Structured data / schema',
+          'Local SEO improvements',
+          'AI search preparation'
+        ]
+      }
+    ],
+    idealFor: [
+      'Busy owners who need it handled',
+      'Businesses ready to grow',
+      'Those who want consistent presence',
+      'Local service providers'
+    ],
+    ctaText: 'Go Hands-Free'
+  },
+  {
+    id: 'concierge-250',
+    name: 'Digital Concierge',
+    tagline: 'You Run It, We Create It',
+    icon: '/images/emojis/site/icon-phone-mobile.png',
+    priceDisplay: '$250/week',
+    description: 'We create all your weekly content one week in advance. You stay hands-on, but with professional creative direction.',
+    features: [
+      'Weekly content created in advance',
+      'Social creatives for FB, IG, Nextdoor, GMB',
+      'Captions, prompts, and talking points',
+      'Simple calendar with exact posting instructions',
+      'Brand-consistent messaging'
+    ],
+    deliverables: [
+      {
+        category: 'Social Content',
+        items: [
+          '10-20 branded posts weekly',
+          'Platform-specific formatting',
+          'Hashtag strategy included',
+          'Content calendar with dates'
+        ]
+      },
+      {
+        category: 'Support',
+        items: [
+          'Weekly creative review',
+          'Posting instructions',
+          'Response templates',
+          'Async communication support'
+        ]
+      }
+    ],
+    idealFor: [
+      'Owners who want to stay hands-on',
+      'Those building posting habits',
+      'Businesses testing the waters',
+      'Side hustlers with day jobs'
+    ],
+    ctaText: 'Start Creating'
+  },
+  {
+    id: 'concierge-600',
+    name: 'Full Digital Management',
+    tagline: 'Your Complete Digital Team',
+    icon: '/images/emojis/site/icon-crown.png',
+    priceDisplay: '$600/week',
+    description: 'Full digital management plus either office support OR video creation. This is for businesses ready for real momentum.',
+    features: [
+      'Everything in $400 tier',
+      'Choose: Office Support OR Video Creation',
+      'Email triage and management',
+      'Call & text coordination',
+      'Lead routing and follow-up',
+      'Short-form video content'
+    ],
+    deliverables: [
+      {
+        category: 'Path A: Office Support',
+        items: [
+          'Email inbox management',
+          'Call/text routing',
+          'Lead qualification',
+          'Customer coordination',
+          'Appointment confirmations'
+        ]
+      },
+      {
+        category: 'Path B: Video Creation',
+        items: [
+          'Short-form videos weekly',
+          'Testimonial-style content',
+          'Educational clips',
+          'Story-driven micro-content',
+          'Platform-optimized formats'
+        ]
+      }
+    ],
+    idealFor: [
+      'Growing businesses with volume',
+      'Owners drowning in admin',
+      'Those ready for video content',
+      'Businesses scaling fast'
+    ],
+    ctaText: 'Scale With Us'
   }
 ];
 

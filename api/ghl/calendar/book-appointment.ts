@@ -120,22 +120,17 @@ export default async function handler(
       hour12: true
     })
 
-    // Build SMS message for Magic Trick
-    const leadScore = journeyData?.leadScore || 0
-    const vibePersona = journeyData?.vibePersona || 'Unknown Persona'
-    const painPoints = journeyData?.painPoints?.join(', ') || 'Not specified'
+    // Build SMS message for Magic Trick (first-person from user's perspective)
+    const firstName = name.split(' ')[0] // Extract first name
+    const painPoints = journeyData?.painPoints?.join(', ') || 'some challenges I\'m facing'
 
-    const smsMessage = `Hey Chrix! 🎉 ${name} just booked a Vibe Journey call!
+    const smsMessage = `Hi, my name is ${firstName}! I was just on your website and I'm really excited about working together.
 
-📊 Lead Score: ${leadScore}/100
-🎭 Vibe Persona: ${vibePersona}
-📅 Call: ${formattedDate} at ${formattedTime}
+I booked a call for ${formattedDate} at ${formattedTime}.
 
-😫 Pain Points: ${painPoints}
+I'm looking forward to chatting about: ${painPoints}
 
-Get hyped! 🚀
-
-- Sent via SMS Magic Trick ✨`
+Can't wait to connect! 🎉`
 
     // Build SMS data for frontend
     const smsData = {

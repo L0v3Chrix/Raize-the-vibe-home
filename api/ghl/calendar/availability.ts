@@ -35,12 +35,11 @@ function getTimePeriod(slot: CalendarSlot): 'morning' | 'afternoon' | 'excluded'
 
 function filterSlots(slots: CalendarSlot[]): CalendarSlot[] {
   const now = new Date()
-  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  const tomorrowStart = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000)
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
 
-  // Filter and categorize
+  // Group by ISO date for consistency
   const categorized: {
-    [date: string]: {
+    [isoDate: string]: {
       morning: CalendarSlot[]
       afternoon: CalendarSlot[]
     }
@@ -49,8 +48,8 @@ function filterSlots(slots: CalendarSlot[]): CalendarSlot[] {
   for (const slot of slots) {
     const slotDate = new Date(slot.startTime)
 
-    // Exclude same-day appointments
-    if (slotDate < tomorrowStart) continue
+    // Exclude same-day appointments (anything today)
+    if (slotDate.toDateString() === today.toDateString()) continue
 
     // Exclude weekends
     if (!isBusinessDay(slotDate)) continue
@@ -59,23 +58,23 @@ function filterSlots(slots: CalendarSlot[]): CalendarSlot[] {
     const period = getTimePeriod(slot)
     if (period === 'excluded') continue
 
-    // Group by date
-    const dateKey = slot.date
-    if (!categorized[dateKey]) {
-      categorized[dateKey] = { morning: [], afternoon: [] }
+    // Group by ISO date string (YYYY-MM-DD) for consistent grouping
+    const isoDate = slotDate.toISOString().split('T')[0]
+    if (!categorized[isoDate]) {
+      categorized[isoDate] = { morning: [], afternoon: [] }
     }
-    categorized[dateKey][period].push(slot)
+    categorized[isoDate][period].push(slot)
   }
 
-  // Limit to 4 business days and 2-3 slots per period
-  const result: CalendarSlot[] = []
-  const dates = Object.keys(categorized).slice(0, 4)
+  // Take first 4 business days, sorted chronologically
+  const dates = Object.keys(categorized).sort().slice(0, 4)
 
-  for (const date of dates) {
-    // Take 2-3 morning slots
-    result.push(...categorized[date].morning.slice(0, 3))
-    // Take 2-3 afternoon slots
-    result.push(...categorized[date].afternoon.slice(0, 3))
+  const result: CalendarSlot[] = []
+  for (const isoDate of dates) {
+    // Take 1-2 morning slots, 1-2 afternoon slots per day
+    // This ensures variety across days while hitting 6-8 total
+    result.push(...categorized[isoDate].morning.slice(0, 2))
+    result.push(...categorized[isoDate].afternoon.slice(0, 2))
   }
 
   return result
