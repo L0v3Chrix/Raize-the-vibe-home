@@ -60,21 +60,25 @@ export default async function handler(
       return res.status(500).json({ error: 'Server configuration error' })
     }
 
+    // Get location ID from environment
+    const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID
+
+    if (!GHL_LOCATION_ID) {
+      return res.status(500).json({ error: 'Server configuration error: missing location ID' })
+    }
+
     // Book appointment in GHL
     const appointmentPayload = {
       calendarId: GHL_CALENDAR_ID,
-      selectedSlot: slotId,
-      selectedTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      contact: {
-        id: contactId,
-        name,
-        email,
-        phone
-      }
+      locationId: GHL_LOCATION_ID,
+      contactId,
+      startTime: slotId, // Use the slot ID as the start time (ISO timestamp)
+      title: 'Vibe Journey Call',
+      appointmentStatus: 'confirmed'
     }
 
     const appointmentResponse = await fetch(
-      `${GHL_API_BASE}/calendars/${GHL_CALENDAR_ID}/appointments`,
+      `${GHL_API_BASE}/calendars/events/appointments`,
       {
         method: 'POST',
         headers: {
