@@ -14,6 +14,73 @@ interface CalendarSlot {
   urgency?: 'immediate' | 'soon' | 'available'
 }
 
+function isBusinessDay(date: Date): boolean {
+  const day = date.getDay()
+  return day !== 0 && day !== 6 // Not Sunday (0) or Saturday (6)
+}
+
+function getTimePeriod(slot: CalendarSlot): 'morning' | 'afternoon' | 'excluded' {
+  const startTime = new Date(slot.startTime)
+  const hour = startTime.getHours()
+
+  // Morning: 9am-12pm
+  if (hour >= 9 && hour < 12) return 'morning'
+
+  // Afternoon: 1pm-5pm
+  if (hour >= 13 && hour < 17) return 'afternoon'
+
+  // Excluded: before 9am, 12pm-1pm lunch, after 5pm
+  return 'excluded'
+}
+
+function filterSlots(slots: CalendarSlot[]): CalendarSlot[] {
+  const now = new Date()
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const tomorrowStart = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000)
+
+  // Filter and categorize
+  const categorized: {
+    [date: string]: {
+      morning: CalendarSlot[]
+      afternoon: CalendarSlot[]
+    }
+  } = {}
+
+  for (const slot of slots) {
+    const slotDate = new Date(slot.startTime)
+
+    // Exclude same-day appointments
+    if (slotDate < tomorrowStart) continue
+
+    // Exclude weekends
+    if (!isBusinessDay(slotDate)) continue
+
+    // Exclude non-business hours
+    const period = getTimePeriod(slot)
+    if (period === 'excluded') continue
+
+    // Group by date
+    const dateKey = slot.date
+    if (!categorized[dateKey]) {
+      categorized[dateKey] = { morning: [], afternoon: [] }
+    }
+    categorized[dateKey][period].push(slot)
+  }
+
+  // Limit to 4 business days and 2-3 slots per period
+  const result: CalendarSlot[] = []
+  const dates = Object.keys(categorized).slice(0, 4)
+
+  for (const date of dates) {
+    // Take 2-3 morning slots
+    result.push(...categorized[date].morning.slice(0, 3))
+    // Take 2-3 afternoon slots
+    result.push(...categorized[date].afternoon.slice(0, 3))
+  }
+
+  return result
+}
+
 export default async function handler(
   req: VercelRequest,
   res: VercelResponse
@@ -97,13 +164,8 @@ export default async function handler(
       }
     })
 
-    // Filter to only next 72 hours and sort by start time
-    const filteredSlots = slots
-      .filter(slot => {
-        const slotTime = new Date(slot.startTime)
-        return slotTime <= endDate
-      })
-      .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime())
+    // Apply smart filtering: 4 business days, morning/afternoon only, no same-day
+    const filteredSlots = filterSlots(slots)
 
     return res.status(200).json({
       slots: filteredSlots,

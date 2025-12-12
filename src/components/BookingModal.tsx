@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, User, Mail, Phone, MessageSquare, Sparkles, CheckCircle } from 'lucide-react';
 import { useVibeStore } from '../store/vibeStore';
 import { CalendarStep } from './journey/CalendarStep';
+import { MagicTrickSticker } from './journey/MagicTrickSticker';
+import { triggerSMS, type SMSTriggerData } from '../utils/sms-trigger';
 
 export default function BookingModal() {
   const { modalState, closeModal, vibeResult, capturedEmail, unlockTreasure, fullContactCaptured, contactInfo, captureFullContact, answers } = useVibeStore();
@@ -10,6 +12,7 @@ export default function BookingModal() {
   const [contactId, setContactId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [smsData, setSmsData] = useState<SMSTriggerData | null>(null);
 
   // Unlock priority booking when modal opens
   useEffect(() => {
@@ -97,9 +100,18 @@ export default function BookingModal() {
     handleContactSubmission(formData);
   };
 
-  const handleBookingComplete = (appointmentId: string) => {
+  const handleBookingComplete = (appointmentId: string, smsData?: SMSTriggerData) => {
+    if (smsData) {
+      setSmsData(smsData);
+    }
     setStep('success');
     console.log('✅ Booking completed! Appointment ID:', appointmentId);
+  };
+
+  const handleSMSTrigger = () => {
+    if (smsData) {
+      triggerSMS(smsData);
+    }
   };
 
   const handleClose = () => {
@@ -357,6 +369,12 @@ export default function BookingModal() {
                       </li>
                     </ul>
                   </div>
+
+                  {smsData && (
+                    <div className="mt-6">
+                      <MagicTrickSticker onTrigger={handleSMSTrigger} />
+                    </div>
+                  )}
 
                   <motion.button
                     onClick={handleClose}

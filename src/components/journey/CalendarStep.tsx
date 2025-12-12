@@ -32,7 +32,7 @@ interface CalendarStepProps {
     timelineUrgency?: string
     aiAutomationInterest?: number
   }
-  onBooked: (appointmentId: string) => void
+  onBooked: (appointmentId: string, smsData?: SMSTriggerData) => void
 }
 
 export function CalendarStep({ contactId, contactData, journeyData, onBooked }: CalendarStepProps) {
@@ -102,8 +102,8 @@ export function CalendarStep({ contactId, contactData, journeyData, onBooked }: 
           setSmsData(result.smsData)
         }
 
-        // Notify parent component
-        onBooked(result.appointmentId)
+        // Notify parent component with SMS data
+        onBooked(result.appointmentId, result.smsData)
       } else {
         throw new Error(result.error || 'Booking failed')
       }
@@ -206,7 +206,7 @@ export function CalendarStep({ contactId, contactData, journeyData, onBooked }: 
           Pick Your Perfect Time
         </h2>
         <p className="text-zinc-400 flex items-center gap-2">
-          Next 72 hours only — Let's make this happen fast!
+          Next 4 business days — Let's make this happen!
           <img src="/images/emojis/site/icon-lightning.png" alt="lightning" className="w-8 h-8 inline" />
         </p>
       </div>
