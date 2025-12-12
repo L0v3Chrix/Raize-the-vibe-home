@@ -15,7 +15,16 @@ interface VibeStore {
   vibeResult: VibeResult | null;
   emailCaptured: boolean;
   capturedEmail: string;
-  
+
+  // Contact State (for smart form handling)
+  fullContactCaptured: boolean;
+  contactInfo: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+  } | null;
+
   // Lead State
   lead: Lead | null;
   
@@ -41,7 +50,11 @@ interface VibeStore {
   // Results Actions
   calculateResults: () => VibeResult;
   captureEmail: (email: string) => void;
-  
+
+  // Contact Actions
+  captureFullContact: (contact: { firstName: string; lastName: string; email: string; phone: string }) => void;
+  hasFullContact: () => boolean;
+
   // Lead Actions
   setLead: (lead: Lead) => void;
   updateLead: (updates: Partial<Lead>) => void;
@@ -71,7 +84,11 @@ export const useVibeStore = create<VibeStore>()(
       vibeResult: null,
       emailCaptured: false,
       capturedEmail: '',
-      
+
+      // Initial Contact State
+      fullContactCaptured: false,
+      contactInfo: null,
+
       // Initial Lead State
       lead: null,
       
@@ -251,11 +268,24 @@ export const useVibeStore = create<VibeStore>()(
         };
       },
       
-      captureEmail: (email) => set({ 
-        emailCaptured: true, 
-        capturedEmail: email 
+      captureEmail: (email) => set({
+        emailCaptured: true,
+        capturedEmail: email
       }),
-      
+
+      // Contact Actions
+      captureFullContact: (contact) => set({
+        fullContactCaptured: true,
+        contactInfo: contact,
+        emailCaptured: true,
+        capturedEmail: contact.email
+      }),
+
+      hasFullContact: () => {
+        const state = get();
+        return state.fullContactCaptured && state.contactInfo !== null;
+      },
+
       // Lead Actions
       setLead: (lead) => set({ lead }),
       
@@ -296,6 +326,8 @@ export const useVibeStore = create<VibeStore>()(
         vibeResult: state.vibeResult,
         emailCaptured: state.emailCaptured,
         capturedEmail: state.capturedEmail,
+        fullContactCaptured: state.fullContactCaptured,
+        contactInfo: state.contactInfo,
         unlockedTreasures: state.unlockedTreasures,
         couponFound: state.couponFound
       })

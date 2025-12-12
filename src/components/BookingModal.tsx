@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, User, Mail, Phone, MessageSquare, Sparkles, CheckCircle } from 'lucide-react';
 import { useVibeStore } from '../store/vibeStore';
+import { CalendarStep } from './journey/CalendarStep';
 
 export default function BookingModal() {
-  const { modalState, closeModal, vibeResult, capturedEmail, unlockTreasure } = useVibeStore();
+  const { modalState, closeModal, vibeResult, capturedEmail, unlockTreasure, fullContactCaptured, contactInfo, captureFullContact, answers } = useVibeStore();
   const [step, setStep] = useState<'form' | 'calendar' | 'success'>('form');
+  const [contactId, setContactId] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Unlock priority booking when modal opens
   useEffect(() => {
@@ -23,15 +27,79 @@ export default function BookingModal() {
 
   const isOpen = modalState.isOpen && modalState.type === 'booking';
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Move to calendar step
-    setStep('calendar');
+  // Auto-skip form if already have full contact info
+  useEffect(() => {
+    if (fullContactCaptured && contactInfo && modalState.isOpen) {
+      setFormData({ ...contactInfo, notes: '' });
+      // Auto-submit to create contact and move to calendar
+      handleContactSubmission({ ...contactInfo, notes: '' });
+    }
+  }, [fullContactCaptured, contactInfo, modalState.isOpen]);
+
+  const handleContactSubmission = async (contactData: typeof formData) => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Call GHL create-contact API
+      const response = await fetch('/api/ghl/create-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contact: {
+            firstName: contactData.firstName,
+            lastName: contactData.lastName,
+            email: contactData.email,
+            phone: contactData.phone
+          },
+          journeyData: {
+            answers: answers.reduce((acc, a) => ({ ...acc, [`q${a.questionId}`]: a.value }), {}),
+            vibePersona: vibeResult?.type,
+            leadScore: vibeResult?.score,
+            painPoints: answers.find(a => a.questionId === 3)?.value as string[] || [],
+            industryType: answers.find(a => a.questionId === 2)?.value as string || '',
+            budgetTier: answers.find(a => a.questionId === 5)?.value as string || '',
+            timelineUrgency: answers.find(a => a.questionId === 6)?.value as string || '',
+            collaborationStyle: answers.find(a => a.questionId === 7)?.value as string || '',
+            aiAutomationInterest: answers.find(a => a.questionId === 4)?.value as number || 0
+          },
+          aiResponse: vibeResult?.personalizedInsight
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.contactId) {
+        setContactId(result.contactId);
+
+        // Save contact info to store for future use
+        captureFullContact({
+          firstName: contactData.firstName,
+          lastName: contactData.lastName,
+          email: contactData.email,
+          phone: contactData.phone
+        });
+
+        setStep('calendar');
+      } else {
+        throw new Error(result.error || 'Failed to create contact');
+      }
+    } catch (error) {
+      console.error('Contact creation error:', error);
+      setError('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleBookingComplete = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleContactSubmission(formData);
+  };
+
+  const handleBookingComplete = (appointmentId: string) => {
     setStep('success');
-    // In real implementation, this would trigger CRM integration
+    console.log('✅ Booking completed! Appointment ID:', appointmentId);
   };
 
   const handleClose = () => {
@@ -95,6 +163,12 @@ export default function BookingModal() {
                   className="space-y-4"
                 >
                   {/* Quiz result context */}
+                  {error && (
+                    <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl mb-6">
+                      <p className="text-sm text-red-400">{error}</p>
+                    </div>
+                  )}
+
                   {vibeResult && (
                     <div className="p-4 bg-vibe-pink/10 border border-vibe-pink/30 rounded-xl mb-6">
                       <div className="flex items-center gap-2 mb-2">
@@ -199,61 +273,43 @@ export default function BookingModal() {
                   {/* Submit */}
                   <motion.button
                     type="submit"
+                    disabled={isSubmitting}
                     className="w-full py-4 rounded-xl font-semibold text-lg
                              bg-gradient-to-r from-vibe-pink to-vibe-purple text-white
-                             hover:shadow-lg hover:shadow-vibe-pink/30 transition-all"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                             hover:shadow-lg hover:shadow-vibe-pink/30 transition-all
+                             disabled:opacity-50 disabled:cursor-not-allowed"
+                    whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                   >
-                    Continue to Pick a Time →
+                    {isSubmitting ? 'Creating your booking...' : 'Continue to Pick a Time →'}
                   </motion.button>
                 </motion.form>
               )}
 
               {/* Calendar Step */}
-              {step === 'calendar' && (
+              {step === 'calendar' && contactId && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="space-y-6"
                 >
-                  <div className="text-center mb-6">
-                    <p className="text-vibe-muted">
-                      Great, {formData.firstName}! Now pick a time that works for you.
-                    </p>
-                  </div>
-
-                  {/* Placeholder for Calendly/Cal.com embed */}
-                  <div className="bg-vibe-black/50 rounded-xl p-8 text-center border border-white/10">
-                    <Calendar className="w-12 h-12 text-vibe-pink mx-auto mb-4" />
-                    <p className="text-vibe-muted mb-4">
-                      Calendar embed would go here
-                    </p>
-                    <p className="text-xs text-vibe-muted/50 mb-6">
-                      (In production: Calendly or Cal.com integration)
-                    </p>
-
-                    {/* Demo time slots */}
-                    <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
-                      {['Mon 10am', 'Mon 2pm', 'Tue 11am', 'Tue 3pm', 'Wed 10am', 'Wed 1pm'].map((slot) => (
-                        <button
-                          key={slot}
-                          onClick={handleBookingComplete}
-                          className="px-4 py-2 bg-vibe-dark hover:bg-vibe-pink/20 border border-white/10 
-                                   hover:border-vibe-pink/50 rounded-lg text-sm transition-all"
-                        >
-                          {slot}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => setStep('form')}
-                    className="text-sm text-vibe-muted hover:text-white transition-colors"
-                  >
-                    ← Back to details
-                  </button>
+                  <CalendarStep
+                    contactId={contactId}
+                    contactData={{
+                      name: `${formData.firstName} ${formData.lastName}`,
+                      email: formData.email,
+                      phone: formData.phone
+                    }}
+                    journeyData={{
+                      leadScore: vibeResult?.score,
+                      vibePersona: vibeResult?.type,
+                      industryType: answers.find(a => a.questionId === 2)?.value as string,
+                      painPoints: answers.find(a => a.questionId === 3)?.value as string[],
+                      budgetTier: answers.find(a => a.questionId === 5)?.value as string,
+                      timelineUrgency: answers.find(a => a.questionId === 6)?.value as string,
+                      aiAutomationInterest: answers.find(a => a.questionId === 4)?.value as number
+                    }}
+                    onBooked={handleBookingComplete}
+                  />
                 </motion.div>
               )}
 
