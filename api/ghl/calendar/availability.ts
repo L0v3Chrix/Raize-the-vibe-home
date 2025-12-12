@@ -59,12 +59,21 @@ export default async function handler(
     }
 
     const data = await response.json()
-    const ghlSlots = data.slots || []
+
+    // GHL returns slots grouped by date: { "2025-12-12": { "slots": [...] }, ... }
+    // We need to flatten this into a single array
+    const allSlots: string[] = []
+    Object.keys(data).forEach(key => {
+      if (key !== 'traceId' && data[key].slots) {
+        allSlots.push(...data[key].slots)
+      }
+    })
 
     // Transform GHL slots to our CalendarSlot format
-    const slots: CalendarSlot[] = ghlSlots.map((slot: any) => {
-      const startTime = new Date(slot.startTime)
-      const endTime = new Date(slot.endTime)
+    const slots: CalendarSlot[] = allSlots.map((slotTime: string) => {
+      const startTime = new Date(slotTime)
+      // Assume 15-minute slots
+      const endTime = new Date(startTime.getTime() + 15 * 60 * 1000)
 
       // Calculate urgency based on how soon the slot is
       const hoursUntil = (startTime.getTime() - now.getTime()) / (1000 * 60 * 60)
@@ -73,9 +82,9 @@ export default async function handler(
       else if (hoursUntil < 48) urgency = 'soon'
 
       return {
-        id: slot.id || `${slot.startTime}-${slot.endTime}`,
-        startTime: slot.startTime,
-        endTime: slot.endTime,
+        id: slotTime, // Use the ISO timestamp as the slot ID
+        startTime: slotTime,
+        endTime: endTime.toISOString(),
         available: true,
         dayOfWeek: startTime.toLocaleDateString('en-US', { weekday: 'long' }),
         date: startTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
