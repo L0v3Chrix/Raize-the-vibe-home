@@ -76,23 +76,23 @@ export default function ServicesSection() {
                 )}
 
                 {/* Software Not Included Sticker - bottom right corner */}
-                <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
+                <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 z-10 pointer-events-none">
                   <img
                     src="/images/stamps/software-not-included.png"
                     alt="Software not included"
-                    className="h-24 md:h-28 lg:h-32 w-auto object-contain opacity-90"
+                    className="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-90"
                   />
                 </div>
 
                 <div className="p-6">
                   {/* Header */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <img src={service.icon} alt={service.name} className="w-24 h-24" />
-                    <div className="flex-1">
-                      <h3 className="font-display text-xl font-bold">{service.name}</h3>
-                      <p className="text-sm text-vibe-muted">{service.tagline}</p>
+                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4">
+                    <img src={service.icon} alt={service.name} className="w-20 h-20 sm:w-24 sm:h-24" />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg sm:text-xl font-bold">{service.name}</h3>
+                      <p className="text-xs sm:text-sm text-vibe-muted">{service.tagline}</p>
                     </div>
-                    <span className="font-display text-lg font-bold text-vibe-pink whitespace-nowrap">
+                    <span className="font-display text-base sm:text-lg font-bold text-vibe-pink self-start sm:self-auto">
                       {service.priceDisplay}
                     </span>
                   </div>
