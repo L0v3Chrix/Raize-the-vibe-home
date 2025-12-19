@@ -75,14 +75,6 @@ export default function ServicesSection() {
                   </div>
                 )}
 
-                {/* Batteries Stamp - bottom right corner */}
-                <div className="absolute bottom-4 right-4 opacity-80 z-10">
-                  <img
-                    src="/images/stamps/batteries-not-included.png"
-                    alt="Batteries not included"
-                    className="w-16 h-16 md:w-20 md:h-20 rotate-[-12deg]"
-                  />
-                </div>
 
                 <div className="p-6">
                   {/* Header */}
@@ -120,6 +112,15 @@ export default function ServicesSection() {
                     <span>See full details</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
+
+                  {/* Software Not Included Sticker */}
+                  <div className="flex justify-center mb-4">
+                    <img
+                      src="/images/stamps/software-not-included.png"
+                      alt="Software not included"
+                      className="h-8 md:h-10 w-auto object-contain"
+                    />
+                  </div>
 
                   {/* CTA */}
                   <motion.button
