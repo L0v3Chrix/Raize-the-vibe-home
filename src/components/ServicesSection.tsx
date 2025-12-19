@@ -276,12 +276,21 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="mt-12 max-w-2xl mx-auto"
         >
-          <div className="glass-card p-6 border-l-4 border-vibe-cyan">
+          <div className="glass-card p-6 border-l-4 border-vibe-cyan relative overflow-hidden">
+            {/* Software Not Included Sticker */}
+            <div className="absolute top-4 right-4 pointer-events-none">
+              <img
+                src="/images/stamps/software-not-included.png"
+                alt="Software not included"
+                className="h-12 md:h-16 w-auto object-contain opacity-80"
+              />
+            </div>
+
             <h4 className="text-sm font-semibold text-vibe-cyan mb-2 uppercase tracking-wide flex items-center gap-2">
-              <img src="/images/emojis/site/icon-chart-up.png" alt="chart" className="w-8 h-8" />
+              <span>**</span>
               CRM & Backend Automation
             </h4>
-            <p className="text-sm text-vibe-soft leading-relaxed">
+            <p className="text-sm text-vibe-soft leading-relaxed pr-20">
               Our custom CRM is available to all of our clients at wholesale pricing. If your project
               requires backend automation, you can bring your own software or you can pay us between
               <span className="text-white font-semibold"> $75 and $500/month </span>
